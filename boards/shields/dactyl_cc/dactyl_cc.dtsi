@@ -1,9 +1,58 @@
+///#include <dt-bindings/zmk/matrix_transform.h>
+///
+//// {
+///    chosen {
+///        zmk,kscan = &kscan0;
+///        zmk,matrix_transform = &default_transform;
+///    };
+///
+///    default_transform: keymap_transform_0 {
+///        compatible = "zmk,matrix-transform";
+///        columns = <12>;
+///        rows = <6>;
+///// | MX1  | MX2  | MX3  | MX4  | MX5  | MX6  |                 | MX7  | MX8  | MX9  | MX10 | MX11 | MX12 |
+///// | MX13 | MX14 | MX15 | MX16 | MX17 | MX18 |                 | MX19 | MX20 | MX21 | MX22 | MX23 | MX24 |
+///// | MX25 | MX26 | MX27 | MX28 | MX29 | MX30 |                 | MX31 | MX32 | MX33 | MX34 | MX35 | MX36 |
+///// | MX37 | MX38 | MX39 | MX40 | MX41 | MX42 |                 | MX43 | MX44 | MX45 | MX46 | MX47 | MX48 |
+/////        | MX49 | MX50 | MX51 | MX52 |                               | MX53 | MX54 | MX55 | MX56 |
+/////                                    | MX57 | MX58 |   | MX59 | MX60 |
+/////                                           | MX61 |   | MX62 |
+/////                             | MX63 | MX64 | MX65 |   | MX66 | MX67 | MX68 |
+///        map = <
+///RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)                   RC(0,11) RC(0,10) RC(0,9) RC(0,8) RC(0,7) RC(0,6)
+///RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)                   RC(1,11) RC(1,10) RC(1,9) RC(1,8) RC(1,7) RC(1,6)
+///RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)                   RC(2,11) RC(2,10) RC(2,9) RC(2,8) RC(2,7) RC(2,6)
+///RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)                   RC(3,11) RC(3,10) RC(3,9) RC(3,8) RC(3,7) RC(3,6)
+///        RC(4,1) RC(4,2) RC(4,3) RC(4,4)                                    RC(4,10) RC(4,9) RC(4,8) RC(4,7)
+///                                        RC(5,4) RC(5,5)  RC(5,11) RC(5,10)
+///                                                RC(5,3)  RC(5,9)
+///                                RC(5,2) RC(5,1) RC(5,0)  RC(5,6)  RC(5,7) RC(5,8)
+///        >;
+///    };
+///
+///    kscan0: kscan {
+///      compatible = "zmk,kscan-gpio-matrix";
+///      wakeup-source;
+///
+///      diode-direction = "col2row";
+///      row-gpios
+///        = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 0 — NFC1 pin as GPIO
+///        , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 1 — NFC2 pin as GPIO
+///        , <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 2 — D0
+///        , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 3 — D3
+///        , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 4 — D4
+///        , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 5 — D5
+///        ;
+///    };
+///};
+
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+        zmk,physical-layout = &physical_layout0;
     };
 
     default_transform: keymap_transform_0 {
@@ -18,7 +67,7 @@
 //                                    | MX57 | MX58 |   | MX59 | MX60 |
 //                                           | MX61 |   | MX62 |
 //                             | MX63 | MX64 | MX65 |   | MX66 | MX67 | MX68 |
-        map = <
+        map = 
 RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)                   RC(0,11) RC(0,10) RC(0,9) RC(0,8) RC(0,7) RC(0,6)
 RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)                   RC(1,11) RC(1,10) RC(1,9) RC(1,8) RC(1,7) RC(1,6)
 RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)                   RC(2,11) RC(2,10) RC(2,9) RC(2,8) RC(2,7) RC(2,6)
@@ -31,18 +80,108 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)                   RC(3,11) RC(3,
     };
 
     kscan0: kscan {
-      compatible = "zmk,kscan-gpio-matrix";
-      wakeup-source;
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
 
-      // TODO: Fix the col2row (it needs to be 6)
-      diode-direction = "col2row";
-      row-gpios
-        = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 0 — NFC1 pin as GPIO
-        , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 1 — NFC2 pin as GPIO
-        , <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 2 — D0
-        , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 3 — D3
-        , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 4 — D4
-        , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 5 — D5
-        ;
+        diode-direction = "col2row";
+        row-gpios
+            = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 0 — NFC1 pin as GPIO
+            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 1 — NFC2 pin as GPIO
+            , <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 2 — D0
+            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 3 — D3
+            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 4 — D4
+            , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 5 — D5
+            ;
+    };
+
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+        kscan = <&kscan0>;
+
+        keys  //                     w    h      x     y    rot   rx   ry
+            // Row 0 - Left (RC(0,0)–RC(0,5)) — L00 to L05
+            = <&key_physical_attrs 100  100      0     0      0    0    0>  // L00
+            , <&key_physical_attrs 100  100    100     0      0    0    0>  // L01
+            , <&key_physical_attrs 100  100    200     0      0    0    0>  // L02
+            , <&key_physical_attrs 100  100    300     0      0    0    0>  // L03
+            , <&key_physical_attrs 100  100    400     0      0    0    0>  // L04
+            , <&key_physical_attrs 100  100    500     0      0    0    0>  // L05
+            // Row 0 - Right (RC(0,11)–RC(0,6)) — R00 to R05, mirrored
+            , <&key_physical_attrs 100  100   1100     0      0    0    0>  // R00
+            , <&key_physical_attrs 100  100   1000     0      0    0    0>  // R01
+            , <&key_physical_attrs 100  100    900     0      0    0    0>  // R02
+            , <&key_physical_attrs 100  100    800     0      0    0    0>  // R03
+            , <&key_physical_attrs 100  100    700     0      0    0    0>  // R04
+            , <&key_physical_attrs 100  100    600     0      0    0    0>  // R05
+            // Row 1 - Left (RC(1,0)–RC(1,5))
+            , <&key_physical_attrs 100  100      0   100      0    0    0>  // L10
+            , <&key_physical_attrs 100  100    100   100      0    0    0>  // L11
+            , <&key_physical_attrs 100  100    200   100      0    0    0>  // L12
+            , <&key_physical_attrs 100  100    300   100      0    0    0>  // L13
+            , <&key_physical_attrs 100  100    400   100      0    0    0>  // L14
+            , <&key_physical_attrs 100  100    500   100      0    0    0>  // L15
+            // Row 1 - Right (RC(1,11)–RC(1,6))
+            , <&key_physical_attrs 100  100   1100   100      0    0    0>  // R10
+            , <&key_physical_attrs 100  100   1000   100      0    0    0>  // R11
+            , <&key_physical_attrs 100  100    900   100      0    0    0>  // R12
+            , <&key_physical_attrs 100  100    800   100      0    0    0>  // R13
+            , <&key_physical_attrs 100  100    700   100      0    0    0>  // R14
+            , <&key_physical_attrs 100  100    600   100      0    0    0>  // R15
+            // Row 2 - Left (RC(2,0)–RC(2,5))
+            , <&key_physical_attrs 100  100      0   200      0    0    0>  // L20
+            , <&key_physical_attrs 100  100    100   200      0    0    0>  // L21
+            , <&key_physical_attrs 100  100    200   200      0    0    0>  // L22
+            , <&key_physical_attrs 100  100    300   200      0    0    0>  // L23
+            , <&key_physical_attrs 100  100    400   200      0    0    0>  // L24
+            , <&key_physical_attrs 100  100    500   200      0    0    0>  // L25
+            // Row 2 - Right (RC(2,11)–RC(2,6))
+            , <&key_physical_attrs 100  100   1100   200      0    0    0>  // R20
+            , <&key_physical_attrs 100  100   1000   200      0    0    0>  // R21
+            , <&key_physical_attrs 100  100    900   200      0    0    0>  // R22
+            , <&key_physical_attrs 100  100    800   200      0    0    0>  // R23
+            , <&key_physical_attrs 100  100    700   200      0    0    0>  // R24
+            , <&key_physical_attrs 100  100    600   200      0    0    0>  // R25
+            // Row 3 - Left (RC(3,0)–RC(3,5))
+            , <&key_physical_attrs 100  100      0   300      0    0    0>  // L30
+            , <&key_physical_attrs 100  100    100   300      0    0    0>  // L31
+            , <&key_physical_attrs 100  100    200   300      0    0    0>  // L32
+            , <&key_physical_attrs 100  100    300   300      0    0    0>  // L33
+            , <&key_physical_attrs 100  100    400   300      0    0    0>  // L34
+            , <&key_physical_attrs 100  100    500   300      0    0    0>  // L35
+            // Row 3 - Right (RC(3,11)–RC(3,6))
+            , <&key_physical_attrs 100  100   1100   300      0    0    0>  // R30
+            , <&key_physical_attrs 100  100   1000   300      0    0    0>  // R31
+            , <&key_physical_attrs 100  100    900   300      0    0    0>  // R32
+            , <&key_physical_attrs 100  100    800   300      0    0    0>  // R33
+            , <&key_physical_attrs 100  100    700   300      0    0    0>  // R34
+            , <&key_physical_attrs 100  100    600   300      0    0    0>  // R35
+            // Row 4 - Left (RC(4,1)–RC(4,4)) — note: no col0 on this row
+            , <&key_physical_attrs 100  100    100   400      0    0    0>  // L41
+            , <&key_physical_attrs 100  100    200   400      0    0    0>  // L42
+            , <&key_physical_attrs 100  100    300   400      0    0    0>  // L43
+            , <&key_physical_attrs 100  100    400   400      0    0    0>  // L44
+            // Row 4 - Right (RC(4,10)–RC(4,7)) — note: no col11 on this row
+            , <&key_physical_attrs 100  100   1000   400      0    0    0>  // R41
+            , <&key_physical_attrs 100  100    900   400      0    0    0>  // R42
+            , <&key_physical_attrs 100  100    800   400      0    0    0>  // R43
+            , <&key_physical_attrs 100  100    700   400      0    0    0>  // R44
+            // Row 5 thumbs: RC(5,4) RC(5,5) RC(5,11) RC(5,10)
+            , <&key_physical_attrs 100  100    500   500      0    0    0>  // MX57 RC(5,4)
+            , <&key_physical_attrs 100  200    500   600      0    0    0>  // MX58 RC(5,5) — h:2
+            , <&key_physical_attrs 100  200   1000   600      0    0    0>  // MX59 RC(5,11) — h:2
+            , <&key_physical_attrs 100  100   1000   500      0    0    0>  // MX60 RC(5,10)
+            // RC(5,3) RC(5,9)
+            , <&key_physical_attrs 100  100    400   600      0    0    0>  // MX61 RC(5,3)
+            , <&key_physical_attrs 100  100    900   600      0    0    0>  // MX62 RC(5,9)
+            // RC(5,2) RC(5,1) RC(5,0) RC(5,6) RC(5,7) RC(5,8)
+            , <&key_physical_attrs 100  100    300   700      0    0    0>  // MX63 RC(5,2)
+            , <&key_physical_attrs 100  100    400   700      0    0    0>  // MX64 RC(5,1)
+            , <&key_physical_attrs 100  100    500   700      0    0    0>  // MX65 RC(5,0)
+            , <&key_physical_attrs 100  100    900   700      0    0    0>  // MX66 RC(5,6)
+            , <&key_physical_attrs 100  100   1000   700      0    0    0>  // MX67 RC(5,7)
+            , <&key_physical_attrs 100  100   1100   700      0    0    0>  // MX68 RC(5,8)
+            ;
     };
 };
