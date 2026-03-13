@@ -89,13 +89,21 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)                   RC(3,11) RC(3,
         wakeup-source;
 
         diode-direction = "col2row";
+        //row-gpios
+        //    = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 0 — NFC1 pin as GPIO
+        //    , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 1 — NFC2 pin as GPIO
+        //    , <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 2 — D0
+        //    , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 3 — D3
+        //    , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 4 — D4
+        //    , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 5 — D5
+        //    ;
         row-gpios
-            = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 0 — NFC1 pin as GPIO
-            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 1 — NFC2 pin as GPIO
-            , <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 2 — D0
-            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 3 — D3
-            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 4 — D4
-            , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 5 — D5
+            = <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 (Physical D9)
+            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Physical D10)
+            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (Physical D0)
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Physical D3)
+            , <&gpio0 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 4 (Physical D4)
+            , <&gpio0 5  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 5 (Physical D5)
             ;
     };
 
