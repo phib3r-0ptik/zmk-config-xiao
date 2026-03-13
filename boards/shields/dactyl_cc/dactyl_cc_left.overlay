@@ -3,21 +3,12 @@
 #include "dactyl_cc.dtsi" // Notice that the main dtsi files are included in the overlay.
 
 &kscan0 {
-    //col-gpios
-    //    = <&xiao_d 1  GPIO_ACTIVE_HIGH>  // Col 0
-    //    , <&xiao_d 2  GPIO_ACTIVE_HIGH>  // Col 1
-    //    , <&xiao_d 6  GPIO_ACTIVE_HIGH>  // Col 2
-    //    , <&xiao_d 7  GPIO_ACTIVE_HIGH>  // Col 3
-    //    , <&xiao_d 8  GPIO_ACTIVE_HIGH>  // Col 4
-    //    , <&xiao_d 10 GPIO_ACTIVE_HIGH>  // Col 5
-    //    ;
     col-gpios
-        = <&gpio0 3  GPIO_ACTIVE_HIGH> // Col 0 (Physical D1)
-        , <&gpio0 28 GPIO_ACTIVE_HIGH> // Col 1 (Physical D2)
-        , <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 2 (Physical D6) - Was likely dead
-        , <&gpio1 12 GPIO_ACTIVE_HIGH> // Col 3 (Physical D7) - Was likely dead
-        , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 4 (Physical D8) - Was likely dead
-        /* CHANGED: Moved Col 5 from D10 to the free D9 pin */
-        , <&gpio0 9  GPIO_ACTIVE_HIGH> // Col 5 (Physical D9) 
+        = <&xiao_d 1  GPIO_ACTIVE_HIGH>  // Col 0
+        , <&xiao_d 2  GPIO_ACTIVE_HIGH>  // Col 1
+        , <&xiao_d 6  GPIO_ACTIVE_HIGH>  // Col 2
+        , <&xiao_d 7  GPIO_ACTIVE_HIGH>  // Col 3
+        , <&xiao_d 8  GPIO_ACTIVE_HIGH>  // Col 4
+        , <&xiao_d 10 GPIO_ACTIVE_HIGH>  // Col 5
         ;
 };
