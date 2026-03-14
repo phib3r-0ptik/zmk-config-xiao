@@ -8,11 +8,17 @@
 
 &kscan0 {
     col-gpios
-        = <&xiao_d 1  GPIO_ACTIVE_HIGH>  // Col 6
-        , <&xiao_d 2  GPIO_ACTIVE_HIGH>  // Col 7
-        , <&xiao_d 6  GPIO_ACTIVE_HIGH>  // Col 8
-        , <&xiao_d 7  GPIO_ACTIVE_HIGH>  // Col 9
-        , <&xiao_d 8  GPIO_ACTIVE_HIGH>  // Col 10
-        , <&xiao_d 10 GPIO_ACTIVE_HIGH>  // Col 11
+        //= <&xiao_d 1  GPIO_ACTIVE_HIGH>  // Col 6
+        //, <&xiao_d 2  GPIO_ACTIVE_HIGH>  // Col 7
+        //, <&xiao_d 6  GPIO_ACTIVE_HIGH>  // Col 8
+        //, <&xiao_d 7  GPIO_ACTIVE_HIGH>  // Col 9
+        //, <&xiao_d 8  GPIO_ACTIVE_HIGH>  // Col 10
+        //, <&xiao_d 10 GPIO_ACTIVE_HIGH>  // Col 11
+        = <&gpio0 3   GPIO_ACTIVE_HIGH>  // Col 0
+        , <&gpio0 28  GPIO_ACTIVE_HIGH>  // Col 1
+        , <&gpio1 11  GPIO_ACTIVE_HIGH>  // Col 2
+        , <&gpio1 12  GPIO_ACTIVE_HIGH>  // Col 3
+        , <&gpio1 13  GPIO_ACTIVE_HIGH>  // Col 4
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>  // Col 5
         ;
 };
