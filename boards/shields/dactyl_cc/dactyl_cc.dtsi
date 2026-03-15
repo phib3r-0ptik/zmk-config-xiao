@@ -52,7 +52,6 @@
 //&xiao_serial { status = "disabled"; };
 //&xiao_i2c { status = "disabled"; };
 //&xiao_spi { status = "disabled"; };
-&pdm0 { status = "disabled"; };
 
 / {
     chosen {
