@@ -10,12 +10,12 @@
         //, <&xiao_d 7  GPIO_ACTIVE_HIGH>  // Col 3
         //, <&xiao_d 8  GPIO_ACTIVE_HIGH>  // Col 4
         //, <&xiao_d 10 GPIO_ACTIVE_HIGH>  // Col 5
-        = <&gpio0 3   GPIO_ACTIVE_HIGH>  // Col 0
-        , <&gpio0 28  GPIO_ACTIVE_HIGH>  // Col 1
-        , <&gpio1 11  GPIO_ACTIVE_HIGH>  // Col 2
-        , <&gpio1 12  GPIO_ACTIVE_HIGH>  // Col 3
-        , <&gpio1 13  GPIO_ACTIVE_HIGH>  // Col 4
-        , <&gpio1 14 GPIO_ACTIVE_HIGH>  // Col 5
+        = <&gpio0 3   GPIO_ACTIVE_LOW>  // Col 0
+        , <&gpio0 28  GPIO_ACTIVE_LOW>  // Col 1
+        , <&gpio1 11  GPIO_ACTIVE_LOW>  // Col 2
+        , <&gpio1 12  GPIO_ACTIVE_LOW>  // Col 3
+        , <&gpio1 13  GPIO_ACTIVE_LOW>  // Col 4
+        , <&gpio1 15 GPIO_ACTIVE_LOW>  // Col 5
         ;
 };
 
